@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J01Variable.html</title>
+    <script>
+        // 변수 초기화 전
+        var num;
+        document.write("<h2>변수 초기화전</h2>");
+        document.write("num의 자료형:" + typeof (num) + ",num에 저장된데이터:" + num);
+        num = 100;
+
+        // 변수 초기화 후
+        document.write("<h2>변수 초기화 후</h2>");
+        document.write("num의 자료형:" + typeof (num) + ",num에 저장된데이터:" + num);
+
+        // num타입
+        num = '문자열입니다.'; 
+        document.write("<br>num의 자료형:" + typeof (num) + ",num에 저장된 데이터:" + num);
+        
+        // string 타입
+        num = true; 
+        document.write("<br>num의 자료형:" + typeof (num) + ",num에 저장된 데이터:" + num);
+        // boolean 타입
+        // Javascript에서는 변수를 선언한 후 초기값에 의해 자료형이 결정되므로,하나의
+        // 변수로 숫자형,문자형 등 모든 자료형을 활용할 수 있다.
+        // NAN(Not of Number) : 숫자가 아님을 표기하는 자바스크립트 용어
+        // isNAN() : 매개변수가 number타입이면 false, number타입이 아닐때 true
+        //          를 반환하는 함수 즉 변수가 숫자인지 판단하는 함수.
+        var num1 = 10;
+        var num2;
+
+        var str1 = "자바스크립트";
+        var str2; 
+
+        // NaN이 출력된다. 숫자와 undefined에 대한 연산이므로 숫자가 될 수 없다.
+        document.write("<br/>num1+num2=" + (num1 + num2));
+        if (isNaN(num1 + num2)) {
+            alert("NaN이다. 즉 숫자가 아니다.");
+        } else {
+            alert("NaN이 아니다. 즉 숫자이다.");
+        }
+
+        // 숫자형 끼리의 연산이 아니라면 단순 연결되어 출력된다.
+        // 출력 : 자바스크립트undefined
+        document.write("<br/>str1+str2=" + (str1 + str2));
+
+        // 출력 : 10자바스크립터
+        document.write("<br/>num1+str2=" + (num1 + str1));
+
+        // 숫자,문자,Boolean이외의 자료형은 모두 Object으로 선언된다.
+        document.write("<h2>기타자료형</h2>");
+        var date = new Date();
+        document.write("date의 자료형:" + typeof (date) 
+            + ",date에 저장된데이터" + date);
+        document.write("<br/>" + (date.getYear() + 1900) + "년" 
+            + (date.getMonth() + 1) + "월" +date.getDate() + "일");
+
+        // null : 아무런 값도 입력되지 않았다는 의미
+        var nullvar = null;
+        document.write("<br/>nullvar의 자료형:" + typeof (nullvar) 
+            + ",nullvar에 저장된 데이터:" + nullvar);
+        document.write("<br/>nullvar의 자료형:" + typeof (document) 
+            + ",document에 저장된 데이터:" + document);
+        // document : 현재 HTML문서의 정보를 가진 JS의 내장 객체
+        document.write("<h2>novar 출력</h2>");
+        document.write("<br/>novar=" + novar);
+
+        /* var novar = 100; 이 부분을 주석처리한 후 개발자모드f12로 확인하면 에러가
+        발생하고, 웹브라우저에서는 출력되지않는다. 변수를 선언했을때 위로 끌어
+        올려지는 것으로 '호이스팅' 이라고 한다. 변수가 위로끌어올려지므로 주석을
+        제거한 후 첫번째 출력에서는 undefined이 출력된다. */
+        //해당 선언이 없으면 에러발생.
+        var novar = 100;
+        document.write("<br/>novar=" + novar + ",novar의 자료형:" + typeof (novar));
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

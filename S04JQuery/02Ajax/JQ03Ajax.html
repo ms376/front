@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQ03Ajax.html</title>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script>
+        /* 
+            $.ajax() : jquery에서 사용되는 Ajax관련 함수로 load(),get(),post()함수의
+                모든 기능을 가지고 있다. 그러므로 가장 활용빈도가 높다.
+                별도의 인자가 존재하지 않고, JSON형태의 인자 하나만 사용한다.
+                #인자의 속성
+                    url : 요청한 서버의 경로
+                    type : 전송방식으로 get,post가 있다.
+                    dateType : 콜백 데이터의 형식을 지원한다. 
+                        json, xml, script, text, html등이 있다.
+                    success : 요청에 성공한 경우 호출되는 콜백함수를 정의한다.
+                    error : 요청에 실패할 경우 호출되는 콜뱀함수를 정의한다.
+                    contentType : 전송 사용할 컨텐츠타입으로 get혹은 post에 따라 달라진다.
+                    data : 요청시 사용할 파라미터로 JSON형식으로 기술한다.
+        */
+        $(function () {
+            $('#ajaxBtn').click(function () {
+                $.ajax({
+                    // 요청할 서버의 경로
+                    url: '../common/03JsData.js',
+                    // 전송방식은 get방식으로 지정
+                    type: 'get',
+                    // 요청에 성공한 경우 콜백데이터는 JS형식으로 받을것임을 명시
+                    dataType: "script",
+
+                    // 성공했을때 호출할 콜백함수
+                    success: successFunc,
+                    // 실패했을때 호출할 콜백함수
+                    error: errFunc,
+
+                });
+            });
+        });
+        /* 
+            콜백함수의 정의
+                방법1 : success 혹은 error 항목에 익명함수로 정의한다.
+                    형식] success : function(매개변수) {실행부}
+                방법2 : jQuery외부에 JS함수로 정의한다.
+                    형식] success : 함수명
+                    JS함수는 일반적인 형식으로 정의하면 되고, 함수명을
+                        명시할때는 "함수명"만 쓰면 된다.
+                        함수명()과 같이 소괄호를 붙이지 않는다.
+        */
+       // 성공시 호출할 콜백함수
+       function successFunc(responseData) {
+           MyAlert("Hello", "AJAX");
+           $('#ajaxDisplay').html(responseData);
+        }
+        // 실패시 호출할 콜백함수
+        function errFunc(errData) {
+            console.log(errData.state, errData.statusText);
+            MyAlert("에러");
+        }
+    </script>
+</head>
+
+<body>
+    <h2>$.ajax()메소드 사용하기</h2>
+    <button id="ajaxBtn">ajax()메소드 실행하기</button>
+    <div id="ajaxDisplay">
+        ajax결과를 여기에 디스플레이
+    </div>
+</body>
+
+</html>

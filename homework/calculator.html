@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator.html</title>
+    <style>
+        * {
+            font-size: 30px;
+        }
+
+        .numpad {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .numpad>div {
+            position: relative;
+            float: left;
+            width: 100px;
+            height: 45px;
+            border-radius: .30em;
+            box-shadow: 1px 3px 15px -8px rgba(0, 0, 0, 0.5);
+            border: 3px solid black;
+            background-color: rgb(123, 123, 123);
+            margin: 1px;
+            cursor: pointer;
+        }
+
+        .numpad>div>span {
+            position: absolute;
+            display: block;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .numpada>div {
+            position: relative;
+            float: left;
+            width: 205px;
+            height: 50px;
+            border-radius: .30em;
+            border: 3px solid rgba(26, 26, 26, 0.75);
+            background-color: rgb(170, 165, 165);
+            margin: 2px;
+            cursor: pointer;
+
+
+        }
+
+        .numpada>div>span {
+            position: absolute;
+            display: block;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .numpad>div.operator {
+            background-color: rgb(250, 150, 10);
+        }
+
+
+        .numpad>div.calc {
+            background-color: rgb(55, 55, 55);
+        }
+
+        .numpad>div:nth-child(4n+1) {
+            clear: left;
+        }
+
+        .pane {
+            font-family: DotGothic16;
+            font-size: 1.5em;
+            width: 430px;
+            height: 2em;
+            padding: 0.25em;
+            margin-bottom: .1em;
+            box-sizing: border-box;
+            text-align: right;
+            border-radius: .2em;
+            background-color: #8de27a;
+        }
+    </style>
+    <script>
+        function calc(fomula) {
+            return new Function('return ' + fomula)()
+        }
+    </script>
+</head>
+
+<body>
+    <div class="placeholder">
+        <div class="pane">123+654</div>
+        <div class="numpada">
+            <div><span>Backspace</span></div>
+            <div><span>C</span></div>
+        </div>
+        <div class="numpad">
+            <div><span>1</span></div>
+            <div><span>2</span></div>
+            <div><span>3</span></div>
+            <div class="operator"><span>/</span></div>
+            <div><span>4</span></div>
+            <div><span>5</span></div>
+            <div><span>6</span></div>
+            <div class="operator"><span>x</span></div>
+            <div><span>7</span></div>
+            <div><span>8</span></div>
+            <div><span>9</span></div>
+            <div class="operator"><span>+</span></div>
+            <div><span>=</span></div>
+            <div><span>0</span></div>
+            <div><span>.</span></div>
+            <div class="operator"><span>-</span></div>
+        </div>
+        <script>
+            let bufferData = '';
+            document.addEventListener('DOMContentLoaded', () => {
+                document.querySelector('.numpad').addEventListener('mousedown', (e) => {
+                    console.log(e.target.tagName + e.target.innerText);
+                    switch (e.target.innerText) {
+                        case "AC":
+                            bufferData = '';
+                            document.querySelector('.pane').innerText = '0';
+                            break;
+                        case "=":
+                            document.querySelector('.pane').innerText = calc(bufferData);
+                            bufferData = ''
+                            break;
+                        default:
+                            if (!(bufferData == '' && e.target.innerText == '0')) {
+                                bufferData += '' + e.target.innerText;
+                                document.querySelector('.pane').innerText = bufferData;
+                            }
+                            break;
+                    }
+                })
+            })
+        </script>
+</body>
+
+</html>

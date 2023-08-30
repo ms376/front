@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MemberFindSkin</title>
+    <style>
+        * {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 12px;
+            margin: 0px auto;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input,
+        select,
+        button {
+            border: 1px solid #afafaf;
+        }
+
+        input.userInput {
+            padding: 3px 2px;
+        }
+
+        .c_imp {
+            color: red;
+        }
+
+        .userTable {
+            border: none;
+            border-collapse: collapse;
+            width: 670px;
+        }
+    </style>
+</head>
+
+<body>
+    <form name="myform" action="" method="POST" onsubmit="return formValidate();">
+        <table class="userTable">
+            <colgroup>
+                <col width="100px" />
+                <col width="490px" />
+            </colgroup>
+            <tr>
+                <td class="userTit" type="radio" name="pw1" value="2" ;> 아이디 찾기
+                    <input type="radio" name="pw1" value="2" />
+                    <span style="margin-left:10px;"></span>
+                </td>
+                <td class="userTit" type="radio" name="pw1" value="2" ;> 비밀번호 찾기
+                    <input type="radio" name="pw1" value="2" />
+                    <span style="margin-left:10px;"></span>
+                    
+                </td>
+            </tr>
+            <td>
+                <br>
+            </td>
+            <tr>
+                <td class="userTit"><span class="c_imp">></span> 아이디 </td>
+                <td class="userVal">
+                    <input type="text" name="id" value="" maxlength="15" class="userInput" style="width:120px;" />
+                    <span style="margin-left:10px;"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="userTit"><span class="c_imp">></span> 이름 (대표자명) </td>
+                <td class="userVal">
+                    <input type="text" name="id" value="" maxlength="15" class="userInput" style="width:120px;" />
+                    <span style="margin-left:10px;"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="userTit"><span class="c_imp">></span> 이메일</td>
+                <td class="userVal">
+                    <input type="email" name="email1" value="" style="width:90px;" class="userInput" maxlength="25" /> @
+                    <input type="email" name="email1" value="" style="width:90px;" class="userInput" maxlength="25" />
+                    <select>
+                        <option value="email">직접입력</option>
+                        <option value="email">gmail.com</option>
+                        <option value="email">naver.com</option>
+                        <option value="email">daum.net</option>
+                        <option value="email">nate.com</option>
+                    </select>
+                    <br><br><br>
+                    <h1>비밀번호를 찾기 위해서 아이디, 이름과 휴대번호 혹은 이메일을 입력하세요.</h1>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>
